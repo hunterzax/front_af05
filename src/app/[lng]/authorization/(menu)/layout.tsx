@@ -1,0 +1,23 @@
+// Next.js client boundary. Coverity flags this as unused_expr (NO_EFFECT).
+// coverity[unused_expr:SUPPRESS]
+"use client";
+import LayoutMenu from "@/components/layout/LayoutMenu";
+import useLogoutSync from "@/hook/useLogoutSync";
+
+export default function RootLayout({
+  children,
+  params: { lng },
+}: Readonly<{
+  children: React.ReactNode;
+  params: {
+    lng: string;
+  };
+}>) {
+  
+  useLogoutSync();
+  return (
+    <section>
+        <LayoutMenu children={children} />
+    </section>
+  );
+}
